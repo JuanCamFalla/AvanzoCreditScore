@@ -6,8 +6,13 @@ from .logic.logic_deudores import get_deudores
 
 def DeudorList(request):
     deudores = get_deudores()
-    context = { 'variable_list': deudores}
+    context = { 'deudores': deudores}
     return render(request, 'deudor/deudores.html', context)
+
+def DeudorList2(request):
+    deudores = Deudor.objects.all()
+    return JsonResponse(list(deudores.values()), safe=False)
+
 
 def CreateDeudor(request):
     if request.method == 'POST':
