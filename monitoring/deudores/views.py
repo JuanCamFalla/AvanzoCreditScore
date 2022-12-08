@@ -6,7 +6,7 @@ from .models import Deudor
 
 def DeudorList(request):
     queryset = Deudor.objects.all()
-    context = list(queryset.values('id'))
+    context = list(queryset.values('id', 'nombre', 'apellido', 'cedula', 'version'))
     return JsonResponse(context, safe=False)
 
 def CreateDeudor(request):
