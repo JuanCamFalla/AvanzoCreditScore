@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Deudor
 from .logic.logic_deudores import get_deudores
+from .logic.logic_deudores import calcular_credito
 
 def DeudorList(request):
     deudores = get_deudores()
@@ -13,7 +14,14 @@ def DeudorList2(request):
     deudores = Deudor.objects.all()
     return JsonResponse(list(deudores.values()), safe=False)
 
-def calcularCreditScore(request):
+def calcularCreditScore(request, id, version):
+    if request.method == 'PUT':
+        deudor = Deudor.objects.get(id=id)
+        deudor.creditscore = calcular_credito(id)
+        deudor.save()
+        return JsonResponse({'status': 'ok'})
+
+
     return
 
 
