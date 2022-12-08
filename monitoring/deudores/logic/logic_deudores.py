@@ -1,3 +1,4 @@
+import random
 from ..models import Deudor
 
 def get_deudores ():

@@ -49,25 +49,29 @@
                             <td>
                                 {{ var.creditscore }}
                             </td>
-                            <td>
-                                <form method="PUT" action= {% views.calcularCreditScore %}>
-                                
-                                <button type="button" class="btn btn-primary waves-effect waves-light">
-                                    Calcular
-                                </button>
-                                </form>
-                            </td>
+                            
                         </tr>
                         {% endfor %}
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-primary waves-effect waves-light"
+                                onClick=" window.location.href='/' ">
+                                Back
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary waves-effect waves-light"
+                                        onClick=" window.location.href='/creditscore' ">
+                                    Calcular
+                                </button>
+                            </td>
+                        </tr>
 
                         </tbody>
                     </table>
 
                     <div style="text-align:center;">
-                        <button type="button" class="btn btn-primary waves-effect waves-light"
-                                onClick=" window.location.href='/' ">
-                            Back
-                        </button>
+                        
                     </div>
 
                 </div>

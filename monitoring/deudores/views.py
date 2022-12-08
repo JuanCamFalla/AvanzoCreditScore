@@ -5,6 +5,9 @@ from .models import Deudor
 from .logic.logic_deudores import get_deudores
 from .logic.logic_deudores import calcular_credito10
 from .logic.logic_deudores import calcular_credito11
+from django import template
+
+register = template.Library()
 
 def DeudorList(request):
     deudores = get_deudores()
@@ -15,17 +18,18 @@ def DeudorList2(request):
     deudores = Deudor.objects.all()
     return JsonResponse(list(deudores.values()), safe=False)
 
-def calcularCreditScore(request, id, version):
-    if request.method == 'PUT':
-        if version == '1.0':
-            deudor = Deudor.objects.get(id=id)
+@register.simple_tag 
+def calcularCreditScore(request):
+    deudores = get_deudores()
+    context = { 'deudores': deudores}
+    for deudor in deudores:
+        if deudor.version ==1.0:
             deudor.creditscore = calcular_credito10(id)
             deudor.save()
-        if version == "1.1":
-            deudor = Deudor.objects.get(id=id)
+        elif deudor.version ==1.1:
             deudor.creditscore = calcular_credito11(id)
             deudor.save()
-        return JsonResponse({'status': 'ok'})
+    return render(request, 'deudor/deudores.html', context)
 
 
     return
