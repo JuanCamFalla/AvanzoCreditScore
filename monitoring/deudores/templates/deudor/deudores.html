@@ -47,8 +47,10 @@
                                 {{ var.version }}
                             </td>
                             <td>
-                                <button type="button" class="btn btn-primary waves-effect waves-light"
-                                        action= {% calcularCreditScore var.id  %}>
+                                {{ var.creditscore }}
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary waves-effect waves-light">
                                     Calcular
                             </td>
                         </tr>
