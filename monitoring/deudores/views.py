@@ -2,12 +2,12 @@ import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import Deudor
-
+from .logic.logic_deudores import get_deudores
 
 def DeudorList(request):
-    queryset = Deudor.objects.all()
-    context = list(queryset.values('id', 'nombre', 'apellido', 'cedula', 'version'))
-    return JsonResponse(context, safe=False)
+    deudores = get_deudores()
+    context = { 'variable_list': deudores}
+    return render(request, 'deudor/deudores.html', context)
 
 def CreateDeudor(request):
     if request.method == 'POST':
