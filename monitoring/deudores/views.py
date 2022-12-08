@@ -13,6 +13,9 @@ def DeudorList2(request):
     deudores = Deudor.objects.all()
     return JsonResponse(list(deudores.values()), safe=False)
 
+def calcularCreditScore(request):
+    return
+
 
 def CreateDeudor(request):
     if request.method == 'POST':

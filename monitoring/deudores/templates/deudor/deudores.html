@@ -34,10 +34,22 @@
                         <tr>
                             <td class="d-flex justify-content-between">
                                 {{ var.nombre }}
+                                
+                            </td>
+                                
+                            <td>
+                                {{ var.apellido }}
+                            </td>
+                            <td>
+                                {{ var.cedula }}
+                            </td>
+                            <td>
+                                {{ var.version }}
+                            </td>
+                            <td>
                                 <button type="button" class="btn btn-primary waves-effect waves-light"
-                                        onClick="">
-                                    Detail
-                                </button>
+                                        action= {% calcularCreditScore var.id  %}>
+                                    Calcular
                             </td>
                         </tr>
                         {% endfor %}
