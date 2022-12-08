@@ -11,7 +11,7 @@ def get_deudor (id):
 
 def create_deudor (nombre, apellido, cedula, telefono, direccion, email, version):
     deudor = Deudor(nombre=nombre, apellido=apellido, cedula=cedula, telefono=telefono, direccion=direccion, email=email, version=version)
-    deudor.save()
+    deudor.save(using='default')
 
 def calcular_credito10 (id):
     return random.randint(0, 700)

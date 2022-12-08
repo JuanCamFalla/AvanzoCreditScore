@@ -28,7 +28,7 @@ def calcularCreditScore(request):
             deudor.save()
         elif deudor.version ==1.1:
             deudor.creditscore = calcular_credito11(id)
-            deudor.save()
+            deudor.save(using='default')
     return render(request, 'deudor/deudores.html', context)
 
 
@@ -47,6 +47,6 @@ def CreateDeudor(request):
         email = data_json['email']
         version = data_json['version']
         deudor = Deudor(nombre=nombre, apellido=apellido, cedula=cedula, telefono=telefono, direccion=direccion, email=email, version=version)
-        deudor.save()
+        deudor.save(using='default')
         return JsonResponse({'status': 'ok'})
 # Create your views here.
